@@ -12,7 +12,7 @@ int main()
     assert(esBisiesto(1600));
     assert(!esBisiesto(1700));
     assert(!esBisiesto(1800));
-    assert(!esBisiesto(1900));  
+    assert(!esBisiesto(1900));
     assert(esBisiesto(1584));
     assert(esBisiesto(1628));
     assert(esBisiesto(1776));
