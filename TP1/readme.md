@@ -5,6 +5,12 @@
 
 * Trabajo Practico: 1
 * Grupo: * *
-* Integrantes: *Completar*
+* Integrantes:
+    * *Tomás Herrero*
+    * *Estela Maris Marchesani*
+    * *Federico Agustin Bornaz*
+    * *Hector Gabriel Rodriguez*
+    * *Camilo Leroy Lestani Kochen*
+    * *Mario Adrián Turk*
 * Docente: *José Maria Sola*
 * Curso: K1051

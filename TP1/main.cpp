@@ -1,6 +1,9 @@
 #include <iostream>
+//#define NDEBUG 
 #include <cassert>
 //PROTOTIPOS:
+
+//TODO: Ingreso usando funciones + Validación usando una funcion
 
 bool esBisiesto(unsigned anio);
 unsigned getCantidadDias(unsigned mes, unsigned anio);
@@ -9,26 +12,25 @@ bool TestBisiestos();
 bool TestCantDias();
 
 //IMPLEMENTACIONES:
-
+using namespace std;
 int main()
 {
     //PRUEBAS:
     assert(TestBisiestos());
     assert(TestCantDias());
+    cout << "La funcion paso las pruebas\n\n";
 
-    std::cout << "La funcion paso las pruebas\n\n";
-
-    std::cout << "Ingrese un mes:";
+    cout << "Ingrese un mes:";
     unsigned mes;
-    std::cin >> mes;
+    cin >> mes;
 
-    std::cout << "Ingrese un año:";
+    cout << "Ingrese un año:";
     unsigned anio;
-    std::cin >> anio;
+    cin >> anio;
 
-    std::cout << "La cantidad de dias para los datos ingesados es: " << getCantidadDias(mes, anio);
+    cout << "La cantidad de dias para los datos ingesados es: " << getCantidadDias(mes, anio);
 
-    std::cin.get();  //Para pausar en debug
+    cin.get();  //Para pausar en debug
 }
 
 bool TestCantDias(){
