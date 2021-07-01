@@ -11,5 +11,6 @@
     * *Hector Gabriel Rodriguez*
     * *Camilo Leroy Lestani Kochen*
     * *Mario Adrián Turk*
+    * *Dario Nicolas Jimenezs*
 * Docente: *José Maria Sola*
 * Curso: K1051
