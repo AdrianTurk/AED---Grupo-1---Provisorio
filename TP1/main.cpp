@@ -5,8 +5,10 @@ using std::cout;
 using std::cin;
 
 
-unsigned getCantidadDias(unsigned mes, unsigned anio);
+//unsigned getCantidadDias(unsigned mes, unsigned anio);
 bool esBisiesto(unsigned anio);
+unsigned getCantidadDiasFebrero(unsigned anio);
+unsigned getCantidadDias(unsigned mes);
 
 int main(){
     
@@ -21,54 +23,52 @@ int main(){
     }
     
     {//Aplicación
-        unsigned SolicitarMes();
-        unsigned SolicitarAnio();
-        void ValidarMesAnio(unsigned mes, unsigned anio);
+        unsigned obtenerAnio(void);
+        unsigned obtenerMes(void);
+        unsigned mes;
 
-        ValidarMesAnio(
-            SolicitarMes(),
-            SolicitarAnio()         
-        );
+        mes = obtenerMes();
+        cout << "Cantidad de Dias: " << (mes==2 ?
+            getCantidadDiasFebrero(obtenerAnio()):
+            getCantidadDias(mes));
     }
 }
 
-unsigned SolicitarMes(){
+unsigned obtenerMes(void){
+    //Solicita ingreso y valida mes
     cout << "Ingrese un mes:\n";
     unsigned mes;
     cin >> mes;
-    return mes;
+    return (mes > 0 and  mes < 13) ?
+        mes :
+        (cout<<"Mes no valido\n",
+        obtenerMes());
 }
-    
 
-unsigned SolicitarAnio(){
-    cout << "Ingrese un anio:\n";
+unsigned obtenerAnio(void){
+    //Solicita ingreso y valida anio
+    cout << "Ingrese un año:\n";
     unsigned anio;
-    cin >> anio; 
-    return anio;
-}
-
-void ValidarMesAnio(unsigned mes, unsigned anio){
-    mes<1 or mes>12   ? cout << mes << " no es un mes valido." :   
-                        anio < 1583 or anio > 3020 ?
-                        cout << anio << " no es un anio valido." :
-                        cout << "La cantidad de dias es: " << getCantidadDias(mes, anio);
+    cin >> anio;
+    return anio > 1583 and anio < 3020 ?
+        anio :
+        (cout << "Año no valido\n",
+        obtenerAnio());
 }
 
 
 void TestCantDias(){
-    assert(31 == getCantidadDias(1,2020));
-    assert(29 == getCantidadDias(2,2020));
-    assert(28 == getCantidadDias(2,1583));
-    assert(31 == getCantidadDias(3,2020));
-    assert(30 == getCantidadDias(4,2020));
-    assert(31 == getCantidadDias(5,2020));
-    assert(30 == getCantidadDias(6,2020));
-    assert(31 == getCantidadDias(7,2020));
-    assert(31 == getCantidadDias(8,2020));
-    assert(30 == getCantidadDias(9,2020));
-    assert(31 == getCantidadDias(10,2020));
-    assert(30 == getCantidadDias(11,2020));
-    assert(31 == getCantidadDias(12,2020));
+    assert(31 == getCantidadDias(1));
+    assert(31 == getCantidadDias(3));
+    assert(30 == getCantidadDias(4));
+    assert(31 == getCantidadDias(5));
+    assert(30 == getCantidadDias(6));
+    assert(31 == getCantidadDias(7));
+    assert(31 == getCantidadDias(8));
+    assert(30 == getCantidadDias(9));
+    assert(31 == getCantidadDias(10));
+    assert(30 == getCantidadDias(11));
+    assert(31 == getCantidadDias(12));
 }
 
 void TestBisiestos(){
@@ -100,17 +100,20 @@ bool esBisiesto(unsigned anio){
 }
 
 
-
-unsigned getCantidadDias(unsigned mes, unsigned anio){
+unsigned getCantidadDias(unsigned mes){
     /*  DESCRIPCION:
         PRECONDICIONES:     */
-    assert(mes < 13 and mes > 0);
+    assert(mes < 13 and mes > 0 and mes != 2);
     return (mes == 4 or mes == 6 or mes == 9 or mes == 11) ?
-        30 :
-        mes != 2 ? 
-            31 :
-            esBisiesto(anio) ?
-                29 :
-                28
+        30:
+        31;
+}
+
+unsigned getCantidadDiasFebrero(unsigned anio){
+    /*  DESCRIPCION:
+        PRECONDICIONES:     */
+    return esBisiesto(anio) ?
+            29 :
+            28
     ;
 }
